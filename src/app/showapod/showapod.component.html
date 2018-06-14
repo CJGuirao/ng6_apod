@@ -1,0 +1,17 @@
+<div class="container" *ngIf="service.apiResponded">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>{{service.result.title}}</h1>
+
+      <div class="container" *ngIf="service.result.media_type === 'image'">
+        <img [src]="service.result.url" alt="" style="width: 100%">
+      </div>
+      <div class="container" *ngIf="service.result.media_type === 'video'">
+        <iframe width="420" height="315" [src]='sanitizer.bypassSecurityTrustResourceUrl(service.result.url)'>
+        </iframe>
+      </div>
+
+      <p>{{service.result.explanation}}</p>
+    </div>
+  </div>
+</div>
